@@ -65,9 +65,9 @@ def Compile():
                     #insert the compiled content into template.html
                     content = template.replace("{{ content }}", content)
                     #save the compiled file in the _site folder
-                    print(os.path.join(os.getcwd(), "_site", folder, file.replace(".md", ".html")))
-                    open(os.path.join(os.getcwd(), "_site", folder, file.replace(".md", ".html")), 'a').close()
-                    with open(os.path.join(os.getcwd(), "_site", folder, file.replace(".md", ".html")), "w") as s:
+                    print(os.path.join(os.getcwd(), "_site", "blog", folder, file.replace(".md", ".html")))
+                    open(os.path.join(os.getcwd(), "_site", "blog", folder, file.replace(".md", ".html")), 'a').close()
+                    with open(os.path.join(os.getcwd(), "_site", "blog", folder, file.replace(".md", ".html")), "w") as s:
                         s.write(template)
 
 
