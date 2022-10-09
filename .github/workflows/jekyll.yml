@@ -32,6 +32,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Install Python dependencies
+        uses: py-actions/py-dependency-install@v3
+        with:
+          path: "requirements.txt"
       - name: execute py script # run the run.py to get the latest data
         run: |
           python compiler.py
