@@ -43,8 +43,8 @@ def Compile():
         #create a dictionary with the names of each group of blog posts as keys and the content of each group as values
         blog_posts = {}
         for folder in os.listdir("_blog"):
-            blog_posts[folder] = []
             if os.path.isdir("_blog/" + folder):
+                blog_posts[folder] = []
                 for file in os.listdir("_blog/" + folder):
                     if file.endswith(".md"):
                         blog_posts[folder].append(file)
@@ -62,16 +62,16 @@ def Compile():
                 #open the file
                 with open("_blog/" + folder + "/" + file, "r") as f:
                     #read the file
-                    content = f.read()
+                    blogPost = f.read()
                     #compile the markdown into html
-                    content = markdown.markdown(content)
+                    compiledBlogPost = markdown.markdown(blogPost)
                     #insert the compiled content into template.html
-                    content = template.replace("{{ content }}", content)
+                    compiledBloghtml = template.replace("{{ content }}", compiledBlogPost)
                     #save the compiled file in the _site folder
                     print(os.path.join(os.getcwd(), "_site", "blog", folder, file.replace(".md", ".html"))) # /home/runner/turtleship/_site/blog/misc/why.html
                     open(os.path.join(os.getcwd(), "_site", "blog", folder, file.replace(".md", ".html")), 'a').close()
                     with open(os.path.join(os.getcwd(), "_site", "blog", folder, file.replace(".md", ".html")), "w") as s:
-                        s.write(template)
+                        s.write(compiledBloghtml)
 
 
     def home():
