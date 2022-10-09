@@ -101,3 +101,5 @@ def Compile():
 
 if __name__ == "__main__":
     Compile()
+
+    assert Path("_site/index.html").exists()
