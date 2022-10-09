@@ -90,7 +90,7 @@ def Compile():
 
 
     #clear the _site folder
-    if Path('_site').exists:
+    if Path('_site').exists():
         shutil.rmtree("_site")
     os.mkdir("_site")
 
