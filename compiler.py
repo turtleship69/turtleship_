@@ -52,9 +52,12 @@ def Compile():
         print(str(os.listdir("_blog")))
         print(blog_posts)
 
+        os.mkdir("_site/blog")
+
         #iterate through each folder in the blog_posts dictionary
         for folder in blog_posts:
             #iterate through each file in the folder
+            os.mkdir(f"_site/blog/{folder}")
             for file in blog_posts[folder]:
                 #open the file
                 with open("_blog/" + folder + "/" + file, "r") as f:
@@ -65,7 +68,7 @@ def Compile():
                     #insert the compiled content into template.html
                     content = template.replace("{{ content }}", content)
                     #save the compiled file in the _site folder
-                    print(os.path.join(os.getcwd(), "_site", "blog", folder, file.replace(".md", ".html")))
+                    print(os.path.join(os.getcwd(), "_site", "blog", folder, file.replace(".md", ".html"))) # /home/runner/turtleship/_site/blog/misc/why.html
                     open(os.path.join(os.getcwd(), "_site", "blog", folder, file.replace(".md", ".html")), 'a').close()
                     with open(os.path.join(os.getcwd(), "_site", "blog", folder, file.replace(".md", ".html")), "w") as s:
                         s.write(template)
@@ -90,9 +93,9 @@ def Compile():
     shutil.rmtree("_site")
     os.mkdir("_site")
 
+    #compile site
     blog()
     home()
-
 
 
 if __name__ == "__main__":
