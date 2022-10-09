@@ -19,6 +19,7 @@ import urllib.request
 import urllib.parse
 import urllib.error
 import markdown
+from pathlib import Path
 
 
 #every folder name starting with _ contains source files which need to be compiled, the folder name after _ is the path it is to be compiled to
@@ -89,7 +90,8 @@ def Compile():
 
 
     #clear the _site folder
-    shutil.rmtree("_site")
+    if Path('/usr').exists:
+        shutil.rmtree("_site")
     os.mkdir("_site")
 
     #compile site
