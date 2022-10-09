@@ -86,7 +86,6 @@ def Compile():
                     content = markdown.markdown(content.read())
                 with open("_site/" + filename[:-3] + ".html", "w") as file:
                     file.write(template.replace("{{ content }}", content))
-                continue
 
 
     #clear the _site folder
