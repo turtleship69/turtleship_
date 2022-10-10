@@ -102,4 +102,5 @@ def Compile():
 if __name__ == "__main__":
     Compile()
 
+    #remove?
     assert Path("_site/index.html").exists()

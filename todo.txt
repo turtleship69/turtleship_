@@ -1,0 +1,39 @@
+tasks: 
+blog:
+  -finish writing blog posts
+  -clean up template:
+    -add css you dipshit
+    -add footer footer
+  -add blog posts to blog home page
+  -list of blog categories, list of blogs per category
+home:
+  -add actual home page content
+projects:
+  -learn yaml lmaoooo
+  -make template html
+    -header, title, subtitle, image, sidebar, footer, css
+  -write compiler
+  -finish writeup on sketcher (history, iterations, usage, strengths)
+  *each project's page should consist of a title, subtitle, cover image, preview type, preview, and writeup.md defined in project.yaml
+    -title: title of project
+    -subtitle: one line description of project
+    -cover: cover image to be displayed on project home page
+    -preview type: type of preview to be displayed on project home page
+      -static media: image  
+      -animated media: gif, video
+      -iframe/embed: iframe or embed code
+    -preview: a small demo of the project if applicable, e.g. a gif or iframe
+    -writeup: a markdown file containing the writeup about the project
+fun: 
+  -figure out what this is
+portfolio:
+  -add index.md to show everything
+    -compiler should dynamically populate this page; read md files of all projects and get their names and images
+  -add things to portfolio
+    -replit creates
+    -hacktoberfest
+    -sketcher
+    -ukmc
+    -this website
+    -android developer profile
+    -github profile

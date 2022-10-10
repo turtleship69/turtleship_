@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Sketcher</title>
+    </head>
+    <!--a simple webpage with a form that asks user to upload an image
+    it sends a post request to localhost:7071/api/sketcher-->
+    <body>
+        <form action="http://localhost:7071/api/sketcher" method="post" enctype="multipart/form-data">
+            <input type="file" name="image" id="image"/>
+            <input type="submit" value="Upload" />
+        </form>
+        <form action="http://localhost:7071/api/HttpTrigger1" method="get">
+            <input type="text" name="name" id="name"/>
+            <input type="submit" value="Upload" />
+        </form>
+</html>
