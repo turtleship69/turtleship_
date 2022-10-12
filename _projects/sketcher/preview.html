@@ -1,18 +1,32 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>Sketcher</title>
-    </head>
-    <!--a simple webpage with a form that asks user to upload an image
-    it sends a post request to localhost:7071/api/sketcher-->
-    <body>
-        <form action="http://localhost:7071/api/sketcher" method="post" enctype="multipart/form-data">
-            <input type="file" name="image" id="image"/>
-            <input type="submit" value="Upload" />
-        </form>
-        <form action="http://localhost:7071/api/HttpTrigger1" method="get">
-            <input type="text" name="name" id="name"/>
-            <input type="submit" value="Upload" />
-        </form>
-</html>
+<form action="https://turtleship69.azurewebsites.net/api/sketcher" method="post" enctype="multipart/form-data" id="form" >
+    <input type="file" name="image" id="image"/>
+    <br>
+    <input type="submit" value="Submit"/>
+</form>
+<!--hidden image with id image
+<img src="" id="image" style="display:none;"/>
+<script>
+    //function to send a POST request to the server with the image and replace the form with the image on form submit
+    function uploadImage() {
+        var form = document.getElementById("form");
+        var image = document.getElementById("image");
+        var formData = new FormData(form);
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "https://turtleship69.azurewebsites.net/api/sketcher", true);
+        xhr.send(formData);
+        xhr.onload = function() {
+            image.src=getBase64Image(image);
+        };
+        return false;
+    }
+
+    const toDataURL = url => fetch(url)
+    .then(response => response.blob())
+    .then(blob => new Promise((resolve, reject) => {
+        const reader = new FileReader()
+        reader.onloadend = () => resolve(reader.result)
+        reader.onerror = reject
+        reader.readAsDataURL(blob)
+    }))
+
+</script>

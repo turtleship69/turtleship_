@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!--this is a template for all projects
+    it needs to have a banner at the top with links to /home, /blog, /fun, /portfolio, and /projects
+    title with title }} as a place holder
+    subtitle with subtitle }} as a place holder
+    cover icon with cover }} as a place holder
+    div called preview with preview }} as a place holder
+    main content with writeup }} as a place holder
+-->
+
+<html>
+    <head>
+        <title>{{ title }}</title>
+        <!--import bootstrap.css-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="/home">Home</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/blog">Blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/fun">Fun</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/portfolio">Portfolio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/projects">Projects</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <div id="content">
+            <h1>{{ title }}</h1>
+            <h2>{{ subtitle }}</h2>
+            <img src="{{ cover }}" alt="cover icon for {{ title }}" width="50%" height="50%">
+            <div id="preview">
+                {{ preview }}
+            </div>
+            <div id="writeup">
+                {{ writeup }}
+            </div>
+        </div>
+        <!--make div "side" go on the side of the main content-->
+        <!-- <style type="text/css">
+            #content {
+                width: 75%;
+                float: left;
+            }
+        
+            #preview {
+                width: 25%;
+                float: right;
+            }
+        
+            #writeup {
+                width: 75%;
+                float: left;
+            }
+        </style> -->
+    </body>
+</html>
