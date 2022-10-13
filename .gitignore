@@ -1,5 +1,4 @@
 _site/
-todo.txt
 
 #replit
 .replit
@@ -8,3 +7,6 @@ pyproject.toml
 replit.nix
 venv/
 .breakpoints
+
+# Visual Studio Code
+.vscode/

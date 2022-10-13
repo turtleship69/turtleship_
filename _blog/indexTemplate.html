@@ -1,13 +1,14 @@
-<!--
-    this is a template html file for all blogs
-    it should have a banner at the top with links to /blog, /fun, /home, /portfolio, and /projects
-    it should have a side panel with links to each category of blogs, "hindsight", "just the facts", "misc", "pro tips", and "the story behind"
-      each category should have a link to the category page, /blog/category, and be labelled with the category name
+<!--this is the root of the blog dirctory
+    there should be some welcome text before links to each of the blog categories: "hindsight", "just the facts", "misc", "pro tips", and "the story behind"
+it should have a link to the category page, /blog/category, and be labelled with the category name
+it should have a banner at the top with links to /home, /blog, /fun, /portfolio, and /projects
 -->
 
+<!DOCTYPE html>
+<!-- Path: _blog\index.html -->
 <html>
     <head>
-        <title>Blog</title>
+        <title>{{ title }}</title>
         <!--import bootstrap.css-->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     </head>
@@ -36,34 +37,14 @@
                 </div>
             </nav>
         </header>
+        <div id="main">
+            <h1>{{ title }}</h1>
+            <!-- <p>{{ subtitle }}</p> -->
+        </div>
         <div id="side">
-            <ul>
-            <li><a href="/blog/category/hindsight">Hindsight</a></li>
-            <li><a href="/blog/category/just-the-facts">Just the Facts</a></li>
-            <li><a href="/blog/category/misc">Misc</a></li>
-            <li><a href="/blog/category/pro-tips">Pro Tips</a></li>
-            <li><a href="/blog/category/rant">Rant</a></li>
-            <li><a href="/blog/category/review">Review</a></li>
-            <li><a href="/blog/category/the-story-behind">The Story Behind</a></li>
-        </ul>
+            {% for item in links %}
+            <li><a href="{{ item.href }}">{{ item.title }}</a></li>
+            {% endfor %}
         </div>
-        <!--make div "side" go on the side of the main content-->
-        
-        <div id="content">
-            {{ content }}
-        </div>
-
-        <style
-            type="text/css">
-            #side {
-                float: left;
-                border: 1px solid black;
-                background-color: white;
-                padding-right: 10px;
-                padding-left: 10px;
-            }
-            /*add padding to the left of "context" from "side"*/
-            #content {
-                padding-left: 200px;
-            }
-        </style>
+    </body>
+</html>

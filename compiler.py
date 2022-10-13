@@ -39,7 +39,6 @@ def Compile():
 
     def blog():
         #this function compiles all the blog posts into the _site folder by inserting the compiled content into template.html
-
         with open("_blog/template.html", "r") as t:
             template = t.read()
 
@@ -75,6 +74,34 @@ def Compile():
                     open(os.path.join(os.getcwd(), "_site", "blog", folder, file.replace(".md", ".html")), 'a').close()
                     with open(os.path.join(os.getcwd(), "_site", "blog", folder, file.replace(".md", ".html")), "w") as s:
                         s.write(compiledBloghtml)
+
+        """iterate though every folder and get a list of all posts in that directory and save it to a dictionary called links in the form
+        {
+            "category": [{"title": title, "link": link}, {"title": title, "link": link}],
+            "category2": [{"title": title, "link": link}, {"title": title, "link": link}]
+        }
+        insert a title, subtitle, and list in the form {"title":title, "subtitle":subtitle, "link":[{"href":link, "title":title}]} into each folder in index.html using "indexTemplate.html" as a jinja2 template"""
+        with open("_blog/indexTemplate.html", "r") as t:
+            template = t.read()
+
+        for category in blog_posts:
+            links = []
+            for file in blog_posts[category]:
+                links.append({"title": file.replace(".md", ""), "href": f"/blog/{category}/{file.replace('.md', '.html')}"})
+            compiledhtml = jinja2.Template(template).render(title=category, links=links) #, subtitle=f""
+            with open("_site/blog/" + category + "/index.html", "w") as s:
+                s.write(compiledhtml)
+            print(links)
+
+        links = []
+        for category in blog_posts:
+            links.append({"title": category, "href": f"/blog/{category}/"})
+        compiledhtml = jinja2.Template(template).render(title="Browse all categories", links=links) #, subtitle=f""
+        with open("_site/blog/" + "/index.html", "w") as s:
+            s.write(compiledhtml)
+        print(links)
+        
+
 
 
     def home():
