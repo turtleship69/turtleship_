@@ -14,7 +14,7 @@
     <body>
         <header>
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="/home">Home</a>
+                <a class="navbar-brand" href="/">Home</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -38,13 +38,9 @@
         </header>
         <div id="side">
             <ul>
-            <li><a href="/blog/hindsight">Hindsight</a></li>
-            <li><a href="/blog/just the facts">Just the Facts</a></li>
-            <li><a href="/blog/misc">Misc</a></li>
-            <li><a href="/blog/pro tips">Pro Tips</a></li>
-            <li><a href="/blog/rant">Rant</a></li>
-            <li><a href="/blog/review">Review</a></li>
-            <li><a href="/blog/the story behind">The Story Behind</a></li>
+            {% for item in links %}
+            <li><a href="{{ item.href }}">{{ item.title }}</a></li>
+            {% endfor %}
         </ul>
         </div>
         <!--make div "side" go on the side of the main content-->

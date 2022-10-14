@@ -53,8 +53,18 @@ def Compile():
 
         print(str(os.listdir("_blog")))
         print(blog_posts)
-
         os.mkdir("_site/blog")
+        
+        categoryList = []
+        for category in blog_posts:
+            categoryList.append({"title": category, "href": f"/blog/{category}/"})
+        print("category list" + str(categoryList))
+        compiledhtml = jinja2.Template(template).render(title="Browse all categories", links=categoryList) #, subtitle=f""
+        with open("_site/blog/index.html", "w") as s:
+            s.write(compiledhtml)
+
+
+
 
         #iterate through each folder in the blog_posts dictionary
         for folder in blog_posts:
@@ -68,9 +78,9 @@ def Compile():
                     #compile the markdown into html
                     compiledBlogPost = markdown.markdown(blogPost)
                     #insert the compiled content into template.html using jinja2
-                    compiledBloghtml = jinja2.Template(template).render(content=compiledBlogPost)
+                    compiledBloghtml = jinja2.Template(template).render(content=compiledBlogPost, links=categoryList)
                     #save the compiled file in the _site folder
-                    print(os.path.join(os.getcwd(), "_site", "blog", folder, file.replace(".md", ".html"))) # /home/runner/turtleship/_site/blog/misc/why.html
+                    #print(os.path.join(os.getcwd(), "_site", "blog", folder, file.replace(".md", ".html"))) # /home/runner/turtleship/_site/blog/misc/why.html
                     open(os.path.join(os.getcwd(), "_site", "blog", folder, file.replace(".md", ".html")), 'a').close()
                     with open(os.path.join(os.getcwd(), "_site", "blog", folder, file.replace(".md", ".html")), "w") as s:
                         s.write(compiledBloghtml)
@@ -92,14 +102,6 @@ def Compile():
             with open("_site/blog/" + category + "/index.html", "w") as s:
                 s.write(compiledhtml)
             print(links)
-
-        links = []
-        for category in blog_posts:
-            links.append({"title": category, "href": f"/blog/{category}/"})
-        compiledhtml = jinja2.Template(template).render(title="Browse all categories", links=links) #, subtitle=f""
-        with open("_site/blog/" + "/index.html", "w") as s:
-            s.write(compiledhtml)
-        print(links)
         
 
 

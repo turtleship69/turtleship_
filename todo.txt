@@ -1,6 +1,7 @@
 tasks: 
 blog:
   -finish writing blog posts
+  -add projects
   -clean up template:
     -add css you dipshit
     -add footer footer
