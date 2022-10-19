@@ -104,9 +104,21 @@ def Compile():
             print(links)
 
     def home():
-        #iterate through all files in _home folder and compile them to the root of the _site folder
+        #for every line in titles.txt, open the file with the same name in the _home folder, compile the markdown into html, and insert the compiled content into template.html using jinja2 with the title as the title
+        with open("_home/template.html", "r") as t:
+            template = t.read()
+        with open("_home/titles.txt", "r") as t:
+            titles = t.readlines()
+        for title in titles:
+            filename = title.split("|")[0]
+            with open("_home/" + filename, "r") as f:
+                content = f.read()
+                compiledContent = markdown.markdown(content)
+                with open("_site/" + filename.split(".")[0] + ".html", "w") as s:
+                    s.write(jinja2.Template(template).render(title=title, content=compiledContent))
+    """        #iterate through all files in _home folder and compile them to the root of the _site folder
         #all files are to be compiled and replace the "{{ content }}" placeholder in the template.html file
-        with open("_home/template.html", "r") as template:
+         with open("_home/template.html", "r") as template:
             template = template.read()
         for file in os.listdir("_home"):
             filename = os.fsdecode(file)
@@ -115,7 +127,7 @@ def Compile():
                     content = markdown.markdown(content.read())
                 with open("_site/" + filename[:-3] + ".html", "w") as file:
                     #save a rendered version of the template with the content inserted using jinja2
-                    file.write(jinja2.Template(template).render(content=content))
+                    file.write(jinja2.Template(template).render(content=content)) """
 
     def projects():
         #load template.html from _projects folder and save it as a jinja2 template in memory
