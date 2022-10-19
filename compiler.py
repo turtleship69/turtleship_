@@ -172,9 +172,9 @@ def Compile():
 
 
     #compile site
-    #blog()
+    blog()
     projects()
-    #home()
+    home()
 
 
 if __name__ == "__main__":
