@@ -102,9 +102,6 @@ def Compile():
             with open("_site/blog/" + category + "/index.html", "w") as s:
                 s.write(compiledhtml)
             print(links)
-        
-
-
 
     def home():
         #iterate through all files in _home folder and compile them to the root of the _site folder
@@ -163,12 +160,21 @@ def Compile():
                 projects[project]["writeup"] = markdown.markdown(writeup.read())
             with open("_site/projects/" + project.split("/")[-1] + "/index.html", "w") as file:
                 file.write(template.render(title=projects[project]["title"], subtitle=projects[project]["subtitle"], cover=projects[project]["cover"], preview=projects[project]["preview"], writeup=projects[project]["writeup"]))
+        #create a file called "index.html" in the _site/projects folder and save a rendered version of the template "_projects/indexTemplate.html" with the content inserted using jinja2
+        #the content should be a list of all the projects in the form {"title":title, "link":link}
+        with open("_projects/indexTemplate.html", "r") as t:
+            template = t.read()
+        links = []
+        for project in projects:
+            links.append({"title": projects[project]["title"], "href": f"/projects/{project.split('/')[-1]}"})
+        with open("_site/projects/index.html", "w") as s:
+            s.write(jinja2.Template(template).render(title="Projects", links=links))
 
 
     #compile site
-    blog()
+    #blog()
     projects()
-    home()
+    #home()
 
 
 if __name__ == "__main__":

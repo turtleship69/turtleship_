@@ -1,0 +1,50 @@
+<!--this is the root of the blog dirctory
+    there should be some welcome text before links to each of the blog categories: "hindsight", "just the facts", "misc", "pro tips", and "the story behind"
+it should have a link to the category page, /blog/category, and be labelled with the category name
+it should have a banner at the top with links to /home, /blog, /fun, /portfolio, and /projects
+-->
+
+<!DOCTYPE html>
+<!-- Path: _blog\index.html -->
+<html>
+    <head>
+        <title>{{ title }}</title>
+        <!--import bootstrap.css-->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+    <body>
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="/">Home</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/blog">Blog</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/fun">Fun</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/portfolio">Portfolio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/projects">Projects</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <div id="main">
+            <h1>{{ title }}</h1>
+            <!-- <p>{{ subtitle }}</p> -->
+        </div>
+        <div id="side">
+            {% for item in links %}
+            <li><a href="{{ item.href }}">{{ item.title }}</a></li>
+            {% endfor %}
+        </div>
+    </body>
+</html>

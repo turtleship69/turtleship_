@@ -1,7 +1,7 @@
 ## History
 This was originally created for [replit creates](https://creates.replit.com/), a month long challenge where you're given a new prompt everyday, and need to make anything to for said prompt.  
 On the 11th day, the prompt was "Self-portrait", and I had the idea to make an app which converts a photo into a sketch.  
-After a *an amount of work*, I had [found a script](https://python.plainenglish.io/convert-a-photo-to-pencil-sketch-using-python-in-12-lines-of-code-4346426256d4e) to do the conversion.  
+After a *an amount of work*, I had [found a script](https://python.plainenglish.io/convert-a-photo-to-pencil-sketch-using-python-in-12-lines-of-code-4346426256d4) to do the conversion.  
 Then came the fun part.  
   
 I knew the best way to make a UI was to make a web app, so I made a [replit](https://replit.com/@nathanmachane/portrait-to-sketch) and started working on it.  
