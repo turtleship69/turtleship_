@@ -115,7 +115,7 @@ def Compile():
                 content = f.read()
                 compiledContent = markdown.markdown(content)
                 with open("_site/" + filename.split(".")[0] + ".html", "w") as s:
-                    s.write(jinja2.Template(template).render(title=title, content=compiledContent))
+                    s.write(jinja2.Template(template).render(title=title.split("|")[1], content=compiledContent))
     """        #iterate through all files in _home folder and compile them to the root of the _site folder
         #all files are to be compiled and replace the "{{ content }}" placeholder in the template.html file
          with open("_home/template.html", "r") as template:
