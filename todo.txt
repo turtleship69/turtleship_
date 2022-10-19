@@ -25,9 +25,11 @@ portfolio:
     -android developer profile
     -github profile
 
+workflow:
+  hello???
 
 
-  *each project's page should consist of a title, subtitle, cover image, preview type, preview, and writeup.md defined in project.yaml
+*each project's page should consist of a title, subtitle, cover image, preview type, preview, and writeup.md defined in project.yaml
     -title: title of project
     -subtitle: one line description of project
     -cover: cover image to be displayed on project home page
