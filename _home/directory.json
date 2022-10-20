@@ -1,0 +1,13 @@
+{
+    "index.md": {
+        "type": "page",
+        "title": "Welcome!"
+    }, 
+    "about.md": {
+        "type": "page",
+        "title": "About"
+    }, 
+    "favicon.ico": {
+        "type": "file"
+    }
+}
