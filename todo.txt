@@ -7,10 +7,6 @@ blog:
     -add footer footer
 home:
   -add actual home page content
-projects:
-  -make template html
-    -sidebar, footer, css
-  -fix up writeup on sketcher ??
 fun: 
   -figure out what this is
 portfolio:
