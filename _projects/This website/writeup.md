@@ -9,7 +9,7 @@ I wanted to make a website that would be able to display my projects as well as 
 Very quickly I realised each section would require a custom "compiler". Quotation marks because it's not really being compited but rather converted from markdown to html. Read on for a "brief" explanation of each.  
 
 ## The blog
-This was fairly ~~easy~~ simple. I just needed to make a page that would display all the posts in a list and a page for each post. I just iterate though a folder of (folders of) markdown files and convert them to html, with a predefined html template and jinja2. 
+This was fairly ~easy~ simple. I just needed to make a page that would display all the posts in a list and a page for each post. I just iterate though a folder of (folders of) markdown files and convert them to html, with a predefined html template and jinja2. 
 
 ## The projects
 This was the most complicated part. (So far...) I wanted to be able to display the projects in a list and have a page for each project. I also wanted to be able to have a description.  
@@ -23,3 +23,6 @@ preview: "preview.jpg", "preview.mp4" or "preview.html"
 ``` 
 I then run though all folders in the projects folder and generate a page for each one. The page is generated using a jinja2 template and the yaml file. 
 
+
+## Next steps 
+This website is stil under construction, and in very early stages. As the website 

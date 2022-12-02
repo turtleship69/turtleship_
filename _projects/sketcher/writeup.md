@@ -19,4 +19,4 @@ I had to use a form to send the image, and then use javascript to send the image
 THE PREVIEW IS IN AN IFRAME FFS. I CAN JUST CHANGE THE IFRAME URL.  
 Here's the thing: the url I need to send the form data on takes a post request. I was trying to use JS to embed the responce by editing the html, then by having a hidden image which shows itself- why? It's an iframe.  
 
-Anyway I'm an idiot, I spent way longer than I needed to on this, over way too long, I'm done. ~~Besides, I still need to write the blog compiler.~~ 
+Anyway I'm an idiot, I spent way longer than I needed to on this, over way too long, I'm done. ~Besides, I still need to write the blog compiler.~
