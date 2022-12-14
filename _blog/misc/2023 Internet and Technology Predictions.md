@@ -26,3 +26,7 @@ My personal predictions for the Internet and technology in 2023. Throughout the 
 * Galaxy s23 will continue to just be good. It Just works™. 
 * Nothing gets better. 
 * Pixel 7a and 8 are out and absolute bangers. 
+
+
+
+# MORE COMING SOON™
