@@ -130,7 +130,7 @@ def Compile():
         #if a file called "project.yaml" is found, add the folder to a dictionary with the path of the folder as the key and the content of the "project.yaml" file as the value
         projects = {}
         for folder in os.listdir("_projects"):
-            if os.path.isdir("_projects/" + folder):
+            if os.path.isdir("_projects/" + folder) and folder[0]!= ".":
                 if os.path.isfile("_projects/" + folder + "/project.yaml"):
                     with open("_projects/" + folder + "/project.yaml", "r") as f:
                         projects["_projects/" + folder] = yaml.load(f, Loader=yaml.FullLoader)

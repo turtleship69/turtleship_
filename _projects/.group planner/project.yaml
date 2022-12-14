@@ -1,0 +1,5 @@
+title: Title
+subtitle: Subtitle
+cover: image.png
+preview type: na|static|animated|embed(/local)|iframe(/local)
+preview: preview.html
