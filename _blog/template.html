@@ -6,61 +6,70 @@
 -->
 
 <html>
-    <head>
-        <title>Blog</title>
-        <!--import bootstrap.css-->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    </head>
-    <body>
-        <header>
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="/">Home</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="/blog">Blog</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/fun">Fun</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/portfolio">Portfolio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/projects">Projects</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </header>
-        <div id="side">
-            <ul>
+
+<head>
+    <title>Blog</title>
+    <!--import bootstrap.css-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="/">Home</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/blog">Blog</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/fun">Fun</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/portfolio">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/projects">Projects</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div id="side">
+        <ul>
             {% for item in links %}
             <li><a href="{{ item.href }}">{{ item.title }}</a></li>
             {% endfor %}
         </ul>
-        </div>
-        <!--make div "side" go on the side of the main content-->
-        
-        <div id="content">
-            {{ content }}
-        </div>
+    </div>
+    <!--make div "side" go on the side of the main content-->
 
-        <style
-            type="text/css">
-            #side {
-                float: left;
-                border: 1px solid black;
-                background-color: white;
-                padding-right: 10px;
-                padding-left: 10px;
-            }
-            /*add padding to the left of "context" from "side"*/
-            #content {
-                padding-left: 200px;
-            }
-        </style>
-        
+    <div id="content">
+        {{ content }}
+    </div>
+
+    <style type="text/css">
+        #side {
+            float: left;
+            border: 1px solid black;
+            background-color: white;
+            padding-right: 10px;
+            padding-left: 10px;
+        }
+
+        /*add padding to the left of "context" from "side"*/
+        #content {
+            padding-left: 200px;
+        }
+    </style>
+    <script data-collect-dnt="true" async defer src="https://sa.nathans.games/latest.js"></script>
+    <noscript><img src="https://sa.nathans.games/noscript.gif" alt=""
+            referrerpolicy="no-referrer-when-downgrade" /></noscript>
+</body>
+
+</html>
