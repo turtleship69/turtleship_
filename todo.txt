@@ -2,9 +2,9 @@ tasks:
 blog:
   -finish writing blog posts
   -add projects
+  -fix urls
   -clean up template:
-    -add css you dipshit
-    -add footer footer
+    -add footer
 home:
   -add actual home page content
 fun: 
