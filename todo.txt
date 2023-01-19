@@ -1,28 +1,27 @@
 tasks: 
-blog:
-  -finish writing blog posts
-  -add projects
-  -fix urls
-  -clean up template:
-    -add footer
-home:
-  -add actual home page content
-fun: 
-  -figure out what this is
-portfolio:
-  -add index.md to show everything
-    -compiler should dynamically populate this page; read md files of all projects and get their names and images
-  -add things to portfolio
-    -replit creates
-    -hacktoberfest
-    -sketcher
-    -ukmc
-    -this website
-    -android developer profile
-    -github profile
-
-workflow:
-  hello???
+  blog:
+    -finish writing blog posts
+    -fix urls
+    -clean up template:
+      -add footer
+    -.prefix
+  home:
+    -add actual home page content
+  fun: 
+    -figure out what this is
+  portfolio:
+    -add index.md to show everything
+      -compiler should dynamically populate this page; read md files of all projects and get their names and images
+    -add things to portfolio
+      -replit creates
+      -hacktoberfest
+      -sketcher
+      -ukmc
+      -this website
+      -android developer profile
+      -github profile
+  workflow:
+    clean up
 
 
 *each project's page should consist of a title, subtitle, cover image, preview type, preview, and writeup.md defined in project.yaml

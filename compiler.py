@@ -4,14 +4,13 @@
 # this file is respinsible for compiling all markdown files into a Jekyll site to be hosted on github pages
 
 import json
-#from curses.ascii import isdigit
 import os
 import shutil
-import urllib.request
 from pathlib import Path
 import jinja2
 import markdown
 import yaml
+from pprint import pprint
 
 # every folder name starting with _ contains source files which need to be compiled, the folder name after _ is the path it is to be compiled to
 
@@ -26,9 +25,15 @@ def Compile():
     # this function compiles all the source files into the _site folder
     # the _site folder is then copied to the root of the project and pushed to github pages
 
+    env = jinja2.Environment(
+        loader=jinja2.FileSystemLoader("_templates"),
+        # autoescape=jinja2.select_autoescape()
+    )
+
     def blog():
+        print("compiling blog\n\n\n")
         # this function compiles all the blog posts into the _site folder by inserting the compiled content into template.html
-        with open("_blog/template.html", "r") as t:
+        with open("_templates/blog_posts.html", "r") as t:
             template = t.read()
 
         # create a dictionary with the names of each group of blog posts as keys and the content of each group as values
@@ -49,7 +54,7 @@ def Compile():
             categoryList.append(
                 {"title": category, "href": f"/blog/{category}/"})
         print("category list" + str(categoryList))
-        compiledhtml = jinja2.Template(template).render(
+        compiledhtml = env.get_template("blog_index.html").render(
             title="Browse all categories", links=categoryList)  # , subtitle=f""
         with open("_site/blog/index.html", "w") as s:
             s.write(compiledhtml)
@@ -66,12 +71,11 @@ def Compile():
                     # compile the markdown into html
                     compiledBlogPost = markdown.markdown(blogPost)
                     # insert the compiled content into template.html using jinja2
-                    compiledBloghtml = jinja2.Template(template).render(
+                    compiledBloghtml = env.get_template("blog_posts.html").render(
                         content=compiledBlogPost, links=categoryList)
                     # save the compiled file in the _site folder
                     # print(os.path.join(os.getcwd(), "_site", "blog", folder, file.replace(".md", ".html"))) # /home/runner/turtleship/_site/blog/misc/why.html
-                    open(os.path.join(os.getcwd(), "_site", "blog",
-                         folder, file.replace(".md", ".html")), 'a').close()
+                    #open(os.path.join(os.getcwd(), "_site", "blog", folder, file.replace(".md", ".html")), 'a').close()
                     with open(os.path.join(os.getcwd(), "_site", "blog", folder, file.replace(".md", ".html")), "w") as s:
                         s.write(compiledBloghtml)
 
@@ -81,21 +85,20 @@ def Compile():
             "category2": [{"title": title, "link": link}, {"title": title, "link": link}]
         }
         insert a title, subtitle, and list in the form {"title":title, "subtitle":subtitle, "link":[{"href":link, "title":title}]} into each folder in index.html using "indexTemplate.html" as a jinja2 template"""
-        with open("_blog/indexTemplate.html", "r") as t:
-            template = t.read()
 
         for category in blog_posts:
             links = []
             for file in blog_posts[category]:
                 links.append({"title": file.replace(
                     ".md", ""), "href": f"/blog/{category}/{file.replace('.md', '.html')}"})
-            compiledhtml = jinja2.Template(template).render(
+            compiledhtml = env.get_template("blog_index.html").render(
                 title=category, links=links)  # , subtitle=f""
             with open("_site/blog/" + category + "/index.html", "w") as s:
                 s.write(compiledhtml)
             print(links)
 
     def home():
+        print("compiling home\n\n\n")
         # open directory.json
         # for each item in directory.json, if type is file, copy to site root, if type is page, compile and copy to site root
         with open("_home/directory.json", "r") as d:
@@ -115,9 +118,10 @@ def Compile():
                     s.write(compiledhtml)
 
     def projects():
+        print("compiling projects\n\n\n")
         # load template.html from _projects folder and save it as a jinja2 template in memory
-        with open("_projects/template.html", "r") as template:
-            template = jinja2.Template(template.read())
+        #with open("_projects/template.html", "r") as template:
+        template = env.get_template("projects_pages.html")
         os.mkdir("_site/projects")
         # go though every folder in _projects and look for a file called "project.yaml"
         # if a file called "project.yaml" is found, add the folder to a dictionary with the path of the folder as the key and the content of the "project.yaml" file as the value
@@ -126,9 +130,8 @@ def Compile():
             if os.path.isdir("_projects/" + folder) and folder[0] != ".":
                 if os.path.isfile("_projects/" + folder + "/project.yaml"):
                     with open("_projects/" + folder + "/project.yaml", "r") as f:
-                        projects["_projects/" +
-                                 folder] = yaml.load(f, Loader=yaml.FullLoader)
-        print(projects)
+                        projects["_projects/" + folder] = yaml.load(f, Loader=yaml.FullLoader)
+        pprint(projects)
         """for each item in the dictionary, create a folder in the _site folder with the same name as the folder in _projects
         then create a file called "index.html" in the folder and save a rendered version of the template with the content inserted using jinja2
         title, subtitle, and cover are basic variables which are to be inserted into the template
@@ -165,21 +168,20 @@ def Compile():
             shutil.copyfile(project + "/" + projects[project]["cover"], "_site/" +
                             project[1:] + "/" + projects[project]["cover"].split("/")[-1])
             with open(project + "/writeup.md", "r") as writeup:
-                projects[project]["writeup"] = markdown.markdown(
-                    writeup.read())
+                projects[project]["writeup"] = markdown.markdown(writeup.read())
             with open("_site/projects/" + project.split("/")[-1] + "/index.html", "w") as file:
                 file.write(template.render(title=projects[project]["title"], subtitle=projects[project]["subtitle"],
                            cover=projects[project]["cover"], preview=preview, writeup=projects[project]["writeup"]))
         # create a file called "index.html" in the _site/projects folder and save a rendered version of the template "_projects/indexTemplate.html" with the content inserted using jinja2
         # the content should be a list of all the projects in the form {"title":title, "link":link}
-        with open("_projects/indexTemplate.html", "r") as t:
-            template = t.read()
+        #with open("_projects/indexTemplate.html", "r") as t:
+        #    template = t.read()
         links = []
         for project in projects:
             links.append(
                 {"title": projects[project]["title"], "href": f"/projects/{project.split('/')[-1]}"})
         with open("_site/projects/index.html", "w") as s:
-            s.write(jinja2.Template(template).render(
+            s.write(env.get_template("projects_index.html").render(
                 title="Projects", links=links))
 
     # compile site
