@@ -6,7 +6,7 @@ If you're curious, you can check out shit code [here](https://github.com/turtles
 
 ## The idea
 I wanted to make a website that would be able to display my projects as well as have a blog and a few other random stuff. Inspired by my [friend's website](https://www.revisionland.com), I thought I'd write the whole thing in markdown and use a static site generator to convert it to html. HTML would've been easier.  
-Very quickly I realised each section would require a custom "compiler". Quotation marks because it's not really being compited but rather converted from markdown to html. Read on for a "brief" explanation of each.  
+Very quickly I realised each section would require a custom "compiler". Quotation marks because it's not really being compiled but rather converted from markdown to html. Read on for a "brief" explanation of each.  
 
 ## The blog
 This was fairly ~easy~ simple. I just needed to make a page that would display all the posts in a list and a page for each post. I just iterate though a folder of (folders of) markdown files and convert them to html, with a predefined html template and jinja2. 
