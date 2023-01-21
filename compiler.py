@@ -112,8 +112,7 @@ def Compile():
                 with open("_home/" + item, "r") as f:
                     content = f.read()
                 compiledContent = markdown.markdown(content)
-                compiledhtml = jinja2.Template(
-                    template).render(content=compiledContent)
+                compiledhtml = env.get_template("home.html").render(content=compiledContent)
                 with open("_site/" + item.split(".")[0] + ".html", "w") as s:
                     s.write(compiledhtml)
 
