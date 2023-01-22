@@ -1,0 +1,1 @@
+This bot pulls a random wikipedia article from [Wikipedia](https://en.wikipedia.org/wiki/Special:Random) and tweets it. The bot is written in python and hosted on [Replit](https://dailyrandomwikibot.nathanmachane.repl.co/)

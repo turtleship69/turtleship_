@@ -154,7 +154,7 @@ def Compile():
                     # copy the file to the _site/project folder
                     shutil.copyfile(projects[project]["preview"], "_site/" +
                                     project[1:] + "/" + projects[project]["preview"].split("/")[-1])
-                projects[project]["preview"] = f'<embed src="{projects[project]["preview"]}">'
+                #projects[project]["preview"] = f'<embed src="{projects[project]["preview"]}">'
                 preview = projects[project]["preview"]
             elif projects[project]["preview type"].split("/")[0] == "iframe":
                 if projects[project]["preview type"].split("/")[-1] == "local":
@@ -164,13 +164,16 @@ def Compile():
                 projects[project]["preview"] = f'<iframe src="{projects[project]["preview"]}" width="50%" height="500px"></iframe>'
                 preview = projects[project]["preview"]
             # copy cover image to _site/projects/project folder
-            shutil.copyfile(project + "/" + projects[project]["cover"], "_site/" +
-                            project[1:] + "/" + projects[project]["cover"].split("/")[-1])
+            cover = ""
+            if projects[project]["cover"] != "na":
+                shutil.copyfile(project + "/" + projects[project]["cover"], "_site/" +
+                                project[1:] + "/" + projects[project]["cover"].split("/")[-1])
+                cover = f"\n<img src=\"{projects[project]['cover']}\" alt=\"cover icon for {projects[project]['title']}\" width=\"50%\" height=\"50%\">"
             with open(project + "/writeup.md", "r") as writeup:
                 projects[project]["writeup"] = markdown.markdown(writeup.read())
             with open("_site/projects/" + project.split("/")[-1] + "/index.html", "w") as file:
                 file.write(template.render(title=projects[project]["title"], subtitle=projects[project]["subtitle"],
-                           cover=projects[project]["cover"], preview=preview, writeup=projects[project]["writeup"]))
+                           cover=cover, preview=preview, writeup=projects[project]["writeup"]))
         # create a file called "index.html" in the _site/projects folder and save a rendered version of the template "_projects/indexTemplate.html" with the content inserted using jinja2
         # the content should be a list of all the projects in the form {"title":title, "link":link}
         #with open("_projects/indexTemplate.html", "r") as t:
