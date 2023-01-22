@@ -172,6 +172,7 @@ def Compile():
             with open(project + "/writeup.md", "r") as writeup:
                 projects[project]["writeup"] = markdown.markdown(writeup.read())
             with open("_site/projects/" + project.split("/")[-1] + "/index.html", "w") as file:
+                print("Cover: " + cover)
                 file.write(template.render(title=projects[project]["title"], subtitle=projects[project]["subtitle"],
                            cover=cover, preview=preview, writeup=projects[project]["writeup"]))
         # create a file called "index.html" in the _site/projects folder and save a rendered version of the template "_projects/indexTemplate.html" with the content inserted using jinja2
