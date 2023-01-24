@@ -1,4 +1,5 @@
 _site/
+__pycache__/
 
 _blog/misc/2022 - year in review.md
 server.bat
