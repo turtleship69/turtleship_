@@ -10,6 +10,7 @@ pyproject.toml
 replit.nix
 venv/
 .breakpoints
+server.sh
 
 # Visual Studio Code
 .vscode/
