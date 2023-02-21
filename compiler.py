@@ -33,8 +33,6 @@ def Compile():
     def blog():
         print("compiling blog\n\n\n")
         # this function compiles all the blog posts into the _site folder by inserting the compiled content into template.html
-        with open("_templates/blog_posts.html", "r") as t:
-            template = t.read()
 
         # create a dictionary with the names of each group of blog posts as keys and the content of each group as values
         blog_posts = {}
@@ -103,8 +101,6 @@ def Compile():
         # for each item in directory.json, if type is file, copy to site root, if type is page, compile and copy to site root
         with open("_home/directory.json", "r") as d:
             directory = json.load(d)
-        with open("_home/template.html", "r") as t:
-            template = t.read()
         for item in directory:
             if directory[item]["type"] == "file":
                 shutil.copy("_home/" + item, "_site/" + item)
