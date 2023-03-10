@@ -7,6 +7,10 @@
         "type": "page",
         "title": "About"
     }, 
+    "404.md": {
+        "type": "page",
+        "title": "404 page not found"
+    },
     "favicon.ico": {
         "type": "file"
     }

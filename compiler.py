@@ -103,8 +103,6 @@ def Compile():
         # for each item in directory.json, if type is file, copy to site root, if type is page, compile and copy to site root
         with open("_home/directory.json", "r") as d:
             directory = json.load(d)
-        with open("_home/template.html", "r") as t:
-            template = t.read()
         for item in directory:
             if directory[item]["type"] == "file":
                 shutil.copy("_home/" + item, "_site/" + item)
