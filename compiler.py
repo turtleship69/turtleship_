@@ -183,10 +183,29 @@ def Compile():
             s.write(env.get_template("projects_index.html").render(
                 title="Projects", links=links))
 
+    def fun():
+        #copy rendered files from _fun folder to _site folder
+        files = os.listdir("_fun")
+        if "index.html" in files:
+            os.mkdir("_site/fun")
+            #compile index.html and save it to _site/fun/index.html
+            with open("_fun/index.html", "r") as f:
+                content = f.read()
+                compiledhtml = env.get_template("fun.html").render(content=content)
+                with open("_site/fun/index.html", "w") as s:
+                    s.write(compiledhtml)
+            files.remove("index.html")
+            print("copied index.html to _site/fun")
+
+        for file in files:
+            shutil.copyfile("_fun/" + file, "_site/fun/" + file)
+            print(f"copied {file} to _site/fun")
+
     # compile site
     blog()
     projects()
     home()
+    fun()
 
 
 if __name__ == "__main__":
