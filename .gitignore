@@ -2,7 +2,6 @@ _site/
 __pycache__/
 
 _blog/misc/2022 - year in review.md
-_blog\Rant\People I'm still pissed as.md
 server.bat
 
 #replit
@@ -16,3 +15,5 @@ server.sh
 
 # Visual Studio Code
 .vscode/
+_blog/Completely Unbiased Reviews/Messaging apps.md
+_blog/Rant/People I'm still pissed as.md
